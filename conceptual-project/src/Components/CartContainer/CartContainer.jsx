@@ -3,7 +3,7 @@ import Watch from '../Watch/Watch';
 import './CartContainer.css'
 import PropTypes from 'prop-types';
 
-const CartContainer = ({handleCartButton, isActive,carts}) => {
+const CartContainer = ({handleCartButton, isActive,carts,handleDeleteCart}) => {
     // console.log(isActive);
 
     // const {cart,status}=isActive;
@@ -19,7 +19,7 @@ const CartContainer = ({handleCartButton, isActive,carts}) => {
 
 
             {
-                isActive.cart?<Phone carts={carts}></Phone>:
+                isActive.cart?<Phone handleDeleteCart={handleDeleteCart} carts={carts}></Phone>:
                 <Watch></Watch>
             }
 

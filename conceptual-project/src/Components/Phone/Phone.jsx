@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-const Phone = ({ carts, }) => {
-    console.log(carts);
+const Phone = ({ carts, handleDeleteCart}) => {
+    
     return (
         <div>
             <h1 className="text-2xl">Phone slot</h1>
@@ -12,7 +12,9 @@ const Phone = ({ carts, }) => {
                             <img className="w-20 h-20 " src={cart.image} alt="" />
                             <p>{cart.category}</p>
                             <p>{cart.price}</p>
-                            <button className='btn'>delete</button>
+
+                            <button onClick={()=>handleDeleteCart(cart.id)} className='btn'>delete</button>
+
                         </div>
                     </div>)
                 }
@@ -23,6 +25,7 @@ const Phone = ({ carts, }) => {
 
 Phone.propTypes = {
     carts: PropTypes.object.isRequired,
+    handleDeleteCart:PropTypes.func.isRequired
 }
 
 export default Phone;

@@ -7,6 +7,7 @@ import Header from "./Components/Header/Header"
 
 function App() {
 
+  // Use State For Tow Button one Active then another is deActive
   const [isActive, setIsActive] = useState({
     cart: true,
     status: 'active',
@@ -27,6 +28,7 @@ function App() {
     }
   }
 
+  // Use State for All Products
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -35,7 +37,17 @@ function App() {
       .then(data => setProducts(data))
   }, []);
 
+  //Use State For Carts
   const [carts, setCarts] = useState([]);
+
+// Delete from Cart Button
+
+  const handleDeleteCart = (id) => {
+      const newCart=carts.filter(p=> p.id !== id);
+      setCarts(newCart);
+    }
+
+    // Handle Add To Cart Button
 
   const handleAddToCart = (cart) => {
     const isExist = carts.find(p => p.id === cart.id);
@@ -48,10 +60,7 @@ function App() {
       setCarts(newCart);
     }
 
-    // const handleDeleteCart = () => {
-    //   console.log('id');
-    //   // const newCart=carts.filter(p=> p.id !== id);
-    // }
+    
 
 
 
@@ -75,7 +84,7 @@ function App() {
         <AllProucts products={products} handleAddToCart={handleAddToCart}></AllProucts>
 
         <CartContainer
-
+          handleDeleteCart={handleDeleteCart}
           handleCartButton={handleCartButton}
           isActive={isActive}
           carts={carts}
