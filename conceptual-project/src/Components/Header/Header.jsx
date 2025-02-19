@@ -12,9 +12,12 @@ const Header = () => {
                 <a href="http://">Products</a>
                 <a href="http://">Contact</a>
             </div>
-            <div className="flex text-2xl justify-center items-center">
-                <p> $ 500  </p>
-                <span className="pt-1 text-red-700"><TbBrandCoinbase /></span>
+            <div className="flex text-2xl justify-between items-center gap-6">
+                <p className="btn">Cart</p>
+                <div className="flex">
+                    <p> $ 500  </p>
+                    <span className="pt-1 text-red-700"><TbBrandCoinbase /></span>
+                </div>
             </div>
 
         </div>

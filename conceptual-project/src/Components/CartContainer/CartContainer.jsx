@@ -12,7 +12,7 @@ const CartContainer = ({handleCartButton, isActive}) => {
         <div >
             <h1 className="text-3xl">Cart Container Slot</h1>
 
-            <div className='space-x-6 mt-6'>
+            <div className='flex gap-2 mt-6'>
                 <button className={`${isActive.cart?'btn active':'btn'}`} onClick={()=>handleCartButton('about')}>Phone</button>
                 <button className={`${isActive.cart?'btn':'btn active'}`} onClick={()=>handleCartButton('contact')}>Watch</button>
             </div>

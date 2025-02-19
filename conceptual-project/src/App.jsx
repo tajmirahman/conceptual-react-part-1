@@ -33,7 +33,15 @@ function App() {
     fetch('fake.json')
     .then(res=>res.json())
     .then(data=>setProducts(data))
-  },[])
+  },[]);
+
+  const [carts, setCarts]=useState([]);
+
+  const handleAddToCart=(cart)=>{
+    const newCart=[...carts, cart];
+    setCarts(newCart);
+  }
+  console.log(carts)
 
 
 
@@ -48,7 +56,7 @@ function App() {
 
       <div className="flex justify-between px-20 pt-4">
 
-        <AllProucts products={products}></AllProucts>
+        <AllProucts products={products} handleAddToCart={handleAddToCart}></AllProucts>
 
         <CartContainer  handleCartButton={handleCartButton} isActive={isActive}></CartContainer>
 
