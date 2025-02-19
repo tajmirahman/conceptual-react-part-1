@@ -7,59 +7,65 @@ import Header from "./Components/Header/Header"
 
 function App() {
 
-  const [isActive, setIsActive]=useState({
-      cart:true,
-      status:'active',
+  const [isActive, setIsActive] = useState({
+    cart: true,
+    status: 'active',
   });
 
-  const handleCartButton=(status)=>{
-    if(status === 'about'){
+  const handleCartButton = (status) => {
+    if (status === 'about') {
       setIsActive({
         cart: true,
-        status:'about'
+        status: 'about'
       });
     }
-    else{
+    else {
       setIsActive({
         cart: false,
-        status:'contact'
+        status: 'contact'
       });
     }
   }
 
-  const [products,setProducts]=useState([]);
+  const [products, setProducts] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetch('fake.json')
-    .then(res=>res.json())
-    .then(data=>setProducts(data))
-  },[]);
+      .then(res => res.json())
+      .then(data => setProducts(data))
+  }, []);
 
-  const [carts, setCarts]=useState([]);
+  const [carts, setCarts] = useState([]);
 
-  const handleAddToCart=(cart)=>{
-    const isExist=carts.find(p=> p.id === cart.id);
+  const handleAddToCart = (cart) => {
+    const isExist = carts.find(p => p.id === cart.id);
     // console.log(isExist);
 
-    if(isExist){
+    if (isExist) {
       alert('R add Kora jabe na');
-    }else{
-      const newCart=[...carts, cart];
-    setCarts(newCart);
+    } else {
+      const newCart = [...carts, cart];
+      setCarts(newCart);
     }
 
+    // const handleDeleteCart = () => {
+    //   console.log('id');
+    //   // const newCart=carts.filter(p=> p.id !== id);
+    // }
 
-    
+
+
+
   }
-  
+
 
 
 
   return (
     <>
-      
+
       <div>
-        <Header></Header>
+        <Header carts={carts}></Header>
       </div>
 
       {/* Main div start here */}
@@ -68,13 +74,19 @@ function App() {
 
         <AllProucts products={products} handleAddToCart={handleAddToCart}></AllProucts>
 
-        <CartContainer  handleCartButton={handleCartButton} isActive={isActive}></CartContainer>
+        <CartContainer
+
+          handleCartButton={handleCartButton}
+          isActive={isActive}
+          carts={carts}
+
+        ></CartContainer>
 
       </div>
 
       {/* Main div Ends here */}
-      
-      
+
+
     </>
   )
 }

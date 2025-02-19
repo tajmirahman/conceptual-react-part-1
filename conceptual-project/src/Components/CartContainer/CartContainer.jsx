@@ -3,7 +3,7 @@ import Watch from '../Watch/Watch';
 import './CartContainer.css'
 import PropTypes from 'prop-types';
 
-const CartContainer = ({handleCartButton, isActive}) => {
+const CartContainer = ({handleCartButton, isActive,carts}) => {
     // console.log(isActive);
 
     // const {cart,status}=isActive;
@@ -19,7 +19,7 @@ const CartContainer = ({handleCartButton, isActive}) => {
 
 
             {
-                isActive.cart?<Phone></Phone>:
+                isActive.cart?<Phone carts={carts}></Phone>:
                 <Watch></Watch>
             }
 
@@ -30,7 +30,9 @@ const CartContainer = ({handleCartButton, isActive}) => {
 
 CartContainer.propTypes={
     handleCartButton:PropTypes.object.isRequired,
-    isActive:PropTypes.object.isRequired
+    isActive:PropTypes.object.isRequired,
+    carts:PropTypes.object.isRequired,
+    handleDeleteCart:PropTypes.func.isRequired
     
 }
 
