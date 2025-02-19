@@ -1,0 +1,8 @@
+.active{
+    background-color: rgb(4, 179, 195);
+}
+
+.btn{
+    padding: 10px 20px 10px 20px;
+    border: 2px solid black;
+}
