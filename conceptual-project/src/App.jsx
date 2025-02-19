@@ -38,10 +38,20 @@ function App() {
   const [carts, setCarts]=useState([]);
 
   const handleAddToCart=(cart)=>{
-    const newCart=[...carts, cart];
+    const isExist=carts.find(p=> p.id === cart.id);
+    // console.log(isExist);
+
+    if(isExist){
+      alert('R add Kora jabe na');
+    }else{
+      const newCart=[...carts, cart];
     setCarts(newCart);
+    }
+
+
+    
   }
-  console.log(carts)
+  
 
 
 
