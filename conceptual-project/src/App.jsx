@@ -28,6 +28,7 @@ function App() {
     }
   }
 
+
   // Use State for All Products
   const [products, setProducts] = useState([]);
 
@@ -40,18 +41,32 @@ function App() {
   //Use State For Carts
   const [carts, setCarts] = useState([]);
 
-// Delete from Cart Button
+   // Price set in Main Account
+
+   const [price, setPrice]=useState(500);
+
+   const handleIncrementPrice=(pr)=>{
+       setPrice(price + pr);
+   }
+
+   const handleDecrementPrice=(id)=>{
+       const product=carts.find(cart=> cart.id === id);
+       setPrice(price- product.price)
+   }
+
+  // Delete from Cart Button
 
   const handleDeleteCart = (id) => {
-      const newCart=carts.filter(p=> p.id !== id);
-      setCarts(newCart);
-    }
+    handleDecrementPrice(id);
+    const newCart = carts.filter(p => p.id !== id);
+    setCarts(newCart);
+  }
 
-    // Handle Add To Cart Button
+  // Handle Add To Cart Button
 
   const handleAddToCart = (cart) => {
+    handleIncrementPrice(cart.price);
     const isExist = carts.find(p => p.id === cart.id);
-    // console.log(isExist);
 
     if (isExist) {
       alert('R add Kora jabe na');
@@ -60,12 +75,11 @@ function App() {
       setCarts(newCart);
     }
 
-    
-
-
-
-
   }
+
+   
+
+
 
 
 
@@ -73,8 +87,8 @@ function App() {
   return (
     <>
 
-      <div>
-        <Header carts={carts}></Header>
+      <div className=" sticky top-0 left-0">
+        <Header carts={carts} price={price}></Header>
       </div>
 
       {/* Main div start here */}

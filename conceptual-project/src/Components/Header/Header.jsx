@@ -1,7 +1,7 @@
 import { TbBrandCoinbase } from "react-icons/tb";
 import PropTypes from 'prop-types';
 
-const Header = ({carts}) => {
+const Header = ({carts,price}) => {
     return (
         <div className="flex justify-between py-[10px] px-20 bg-neutral-200">
 
@@ -14,9 +14,9 @@ const Header = ({carts}) => {
                 <a href="http://">Contact</a>
             </div>
             <div className="flex text-2xl justify-between items-center gap-6">
-                <p className="btn">Cart-{carts.length}</p>
-                <div className="flex">
-                    <p> $ 500  </p>
+                <p>Cart-{carts.length}</p>
+                <div className="flex space-x-2">
+                    <p> ${price}  </p>
                     <span className="pt-1 text-red-700"><TbBrandCoinbase /></span>
                 </div>
             </div>
@@ -27,6 +27,7 @@ const Header = ({carts}) => {
 
 Header.propTypes={
     carts:PropTypes.object.isRequired,
+    price:PropTypes.object.isRequired
 }
 
 export default Header;
